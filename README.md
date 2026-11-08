@@ -11,7 +11,7 @@ Auto-detects **Persian (Farsi)**, **Arabic**, and **Hebrew** text in Cursor’s 
 
 ## Install in Cursor (from VSIX)
 
-1. Get the `.vsix` file (packaged next to this project, or build with `npm run package`).
+1. Download the `.vsix` from this repo’s **GitHub Releases** (preferred), or build locally with `npm run package`.
 2. Open **Cursor**.
 3. Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **Extensions: Install from VSIX…**
 4. Choose `cursor-chat-persian-rtl-1.0.0.vsix`.
