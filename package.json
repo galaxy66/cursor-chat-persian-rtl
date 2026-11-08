@@ -1,0 +1,93 @@
+{
+  "name": "cursor-chat-persian-rtl",
+  "displayName": "Cursor Chat Persian RTL",
+  "description": "Auto-detects Persian, Arabic, and Hebrew in Cursor chat/composer and applies RTL layout per message and input, while keeping code blocks LTR. Requires Activate + full Cursor restart (patches workbench).",
+  "version": "1.0.0",
+  "publisher": "rtl-cursor",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "persian",
+    "farsi",
+    "arabic",
+    "hebrew",
+    "rtl",
+    "cursor",
+    "chat",
+    "composer",
+    "bidirectional",
+    "bidi"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "persianChatRtl.activate",
+        "title": "Persian Chat RTL: Activate (auto-detect)"
+      },
+      {
+        "command": "persianChatRtl.deactivate",
+        "title": "Persian Chat RTL: Deactivate"
+      },
+      {
+        "command": "persianChatRtl.status",
+        "title": "Persian Chat RTL: Check Status"
+      },
+      {
+        "command": "persianChatRtl.setModeAuto",
+        "title": "Persian Chat RTL: Mode — Auto-detect"
+      },
+      {
+        "command": "persianChatRtl.setModeForce",
+        "title": "Persian Chat RTL: Mode — Force RTL"
+      },
+      {
+        "command": "persianChatRtl.setModeOff",
+        "title": "Persian Chat RTL: Mode — Off (keep patch, disable effect)"
+      }
+    ],
+    "configuration": {
+      "title": "Persian Chat RTL",
+      "properties": {
+        "persianChatRtl.mode": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "force",
+            "off"
+          ],
+          "default": "auto",
+          "description": "RTL behavior written into the injected assets. auto = detect Persian/Arabic/Hebrew per bubble; force = always RTL in chat; off = patch present but inert."
+        },
+        "persianChatRtl.autoReactivate": {
+          "type": "boolean",
+          "default": true,
+          "description": "On startup, if Cursor was previously activated but an update removed the patch, re-inject automatically."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.mjs --production",
+    "compile": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "package": "npm run build && npx --yes @vscode/vsce package --no-dependencies --allow-missing-repository",
+    "typecheck": "tsc --noEmit",
+    "smoke": "node scripts/smoke-inject.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.0"
+  }
+}
