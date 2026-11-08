@@ -89,5 +89,13 @@
     "@types/vscode": "^1.85.0",
     "esbuild": "^0.24.0",
     "typescript": "^5.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/galaxy66/cursor-chat-persian-rtl"
+  },
+  "homepage": "https://github.com/galaxy66/cursor-chat-persian-rtl#readme",
+  "bugs": {
+    "url": "https://github.com/galaxy66/cursor-chat-persian-rtl/issues"
   }
 }
