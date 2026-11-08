@@ -21,15 +21,35 @@
 
 ---
 
-## ۲) نصب در Cursor (Install from VSIX)
+## ۲) نصب در Cursor (از VSIX)
+
+> **توجه (ویندوز / بعضی بیلدهای Cursor):** بعضی نسخه‌های Cursor دستور یا UI مربوط به **`Extensions: Install from VSIX…`** را نشان نمی‌دهند. در این حالت از **نصب با CLI** استفاده کنید (روش پیشنهادی روی ویندوز).
+
+### روش الف — CLI ویندوز (پیشنهادی اگر Install from VSIX نیست)
+
+1. فایل `.vsix` را دانلود کنید (مثلاً در `Downloads`).
+2. **PowerShell** را باز کنید.
+3. مسیر فایل را جایگزین کنید و اجرا کنید:
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe" --install-extension "PATH\to\cursor-chat-persian-rtl-1.0.0.vsix"
+```
+
+مثال اگر فایل در Downloads باشد:
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe" --install-extension "$env:USERPROFILE\Downloads\cursor-chat-persian-rtl-1.0.0.vsix"
+```
+
+4. اگر Cursor از مسیر دیگری نصب شده، به‌جای مسیر بالا از مسیر واقعی `Cursor.exe` استفاده کنید.
+5. Cursor را باز کنید (یا اگر باز است یک‌بار ببندید و باز کنید) و در لیست Extensions افزونه را ببینید.
+
+### روش ب — از داخل Cursor (اگر دستور موجود باشد)
 
 1. **Cursor** را باز کنید.
-2. پالت فرمان را باز کنید:  
-   - ویندوز / لینوکس: `Ctrl+Shift+P`  
-   - مک: `Cmd+Shift+P`
-3. دستور **`Extensions: Install from VSIX…`** را اجرا کنید.
-4. فایل `cursor-chat-persian-rtl-1.0.0.vsix` را انتخاب کنید.
-5. صبر کنید تا نصب تمام شود (در لیست Extensions ظاهر می‌شود).
+2. پالت فرمان: `Ctrl+Shift+P` (ویندوز/لینوکس) یا `Cmd+Shift+P` (مک).
+3. اگر **`Extensions: Install from VSIX…`** را دیدید، اجرا کنید و فایل `.vsix` را انتخاب کنید.
+4. اگر پیدا نشد → به **روش الف (CLI)** بروید.
 
 ---
 
@@ -145,6 +165,14 @@ Cursor گاهی کلاس‌های DOM چت را عوض می‌کند. اسکری
 
 عمداً فقط **Cursor workbench** هدف است؛ چت Copilot در VS Code جداست.
 
+### و) دستور Install from VSIX پیدا نمی‌شود
+
+در بعضی بیلدهای Cursor این دستور مخفی است. از CLI ویندوز استفاده کنید (بخش ۲ روش الف):
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe" --install-extension "PATH\to\cursor-chat-persian-rtl-1.0.0.vsix"
+```
+
 ---
 
 ## ۹) محدودیت مهم (صادقانه)
@@ -163,7 +191,14 @@ Cursor API رسمی برای استایل‌دادن به حباب‌های چت
 ## Quick start
 
 1. Download the `.vsix` from **Release v1.0.0** Assets.
-2. Cursor → Command Palette → **Extensions: Install from VSIX…** → pick the file.
+2. **Install the extension**
+   - **Windows (recommended if “Install from VSIX” is missing):** some Cursor builds hide that UI/command — use CLI instead:
+
+     ```powershell
+     & "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe" --install-extension "PATH\to\cursor-chat-persian-rtl-1.0.0.vsix"
+     ```
+
+   - **If the command exists:** Command Palette → **Extensions: Install from VSIX…** → pick the file.
 3. Command Palette → **Persian Chat RTL: Activate (auto-detect)**.
 4. **Fully quit** Cursor (File → Exit / Quit) and reopen. Reload Window is often not enough.
 5. Open Chat/Agent and type Persian — bubbles + input should go RTL; code stays LTR.
@@ -196,6 +231,7 @@ Updates often wipe `workbench.html`. With `persianChatRtl.autoReactivate` (defau
 
 | Problem | What to do |
 |---------|------------|
+| No **Install from VSIX** UI/command | Use Windows CLI: `& "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe" --install-extension "PATH\to\….vsix"` |
 | Permission denied writing workbench | Run Cursor elevated once → Activate → quit; then use normally |
 | Patch wiped after update | Activate again + full restart; keep autoReactivate on |
 | Some bubbles stay LTR | Try Mode → Force RTL; report selector drift on the repo |

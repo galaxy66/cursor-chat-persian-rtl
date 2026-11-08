@@ -12,7 +12,14 @@ Auto-detects **Persian (Farsi)**, **Arabic**, and **Hebrew** in Cursor’s chat 
 
 1. Download `cursor-chat-persian-rtl-1.0.0.vsix` from  
    [Release v1.0.0](https://github.com/galaxy66/cursor-chat-persian-rtl/releases/tag/v1.0.0).
-2. Cursor → **Extensions: Install from VSIX…**
+2. **Install**
+   - **Windows:** some Cursor builds hide **Extensions: Install from VSIX…** — use PowerShell:
+
+     ```powershell
+     & "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe" --install-extension "PATH\to\cursor-chat-persian-rtl-1.0.0.vsix"
+     ```
+
+   - Or, if available: Command Palette → **Extensions: Install from VSIX…**
 3. **Persian Chat RTL: Activate (auto-detect)**
 4. **Fully quit** Cursor and reopen (Reload Window is often not enough).
 5. Type Persian in Chat / Agent — bubbles + input should go RTL.
@@ -64,6 +71,11 @@ npm run package
 ## فارسی (خلاصه)
 
 1. از [Release v1.0.0](https://github.com/galaxy66/cursor-chat-persian-rtl/releases/tag/v1.0.0) فایل `.vsix` را بگیرید.
-2. در Cursor: **Install from VSIX** → **Activate (auto-detect)**.
-3. Cursor را **کاملاً ببندید** و دوباره باز کنید.
+2. نصب روی ویندوز (اگر Install from VSIX نبود):
+
+   ```powershell
+   & "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe" --install-extension "PATH\to\cursor-chat-persian-rtl-1.0.0.vsix"
+   ```
+
+3. **Activate (auto-detect)** → Cursor را **کاملاً ببندید** و دوباره باز کنید.
 4. راهنمای کامل: **[docs/USAGE.md](docs/USAGE.md)**
